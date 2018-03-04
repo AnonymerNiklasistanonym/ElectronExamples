@@ -1,1 +1,149 @@
 # ElectronExamples
+
+Example Electron apps
+
+## How to edit Electron projects
+
+Every Electron project consist out of at least these files in one directory:
+
+- package.json
+- main.js
+- index.html
+
+Every file can be edited with a normal text editor like [VS Code Insiders](https://code.visualstudio.com/insiders/).
+
+## How to create Electron project
+
+First you need to install Node.js from [here](https://nodejs.org/en/).
+
+Then you run the following command to initalize a new directory and a `package.json` file for your project:
+
+```bash
+npm init
+```
+
+The new created `package.json` file should look like this:
+
+```json
+{
+  "name": "your-app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ."
+  }
+}
+```
+
+To convert this to a electron application you just need to rename the start script from `node` to `electron`:
+
+```json
+{
+  "name": "your-app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  }
+}
+```
+
+*It is important, that the lines `"main": "main.js"` and `"start": "electron ."` are exactly as in the last code snippet.*
+
+Then you also need to install and add the electron package to your project:
+
+```bash
+npm install --save electron
+```
+
+Now you need to create a [`main.js`](basic-template/main.js) template file (copied form [here](https://github.com/electron/electron/blob/master/docs/tutorial/first-app.md)):
+
+```javascript
+const {app, BrowserWindow} = require('electron')
+const path = require('path')
+const url = require('url')
+
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let win
+
+function createWindow () {
+  // Create the browser window.
+  win = new BrowserWindow({width: 800, height: 600})
+
+  // and load the index.html of the app.
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+
+  // Open the DevTools.
+  win.webContents.openDevTools()
+
+  // Emitted when the window is closed.
+  win.on('closed', () => {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    win = null
+  })
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', createWindow)
+
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (win === null) {
+    createWindow()
+  }
+})
+
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.
+```
+
+And a [`index.html`](basic-template/index.html) file:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        We are using node <script>document.write(process.versions.node)</script>,
+        Chrome <script>document.write(process.versions.chrome)</script>,
+        and Electron <script>document.write(process.versions.electron)</script>.
+	</body>
+</html>
+```
+
+## How to run Electron projects
+
+For starters you need to install everything that is in the `package.json` file (you only need to do this once) (again copied form [here](https://github.com/electron/electron/blob/master/docs/tutorial/first-app.md)):
+
+```bash
+npm install
+```
+
+Then you need only one command to start the application:
+
+```bash
+npm start
+```

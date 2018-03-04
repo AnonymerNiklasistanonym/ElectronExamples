@@ -1,0 +1,5 @@
+# Ignore node modules - use 'npm install' instead!
+node_modules
+
+# Ignore the package-lock.json files - unnecessary data
+package-lock.json
