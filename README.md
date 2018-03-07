@@ -147,3 +147,29 @@ Then you need only one command to start the application:
 ```bash
 npm start
 ```
+
+## How to export Electron projects
+
+To export ELectron projects there are many ways, here is one of them:
+
+1. Install the package `electron-packager`
+
+   ```bash
+   npm install electron-packager -g
+   ```
+
+2. After restarting the console run the command
+
+   ```bash 
+   electron-packager . --platform=<platform>
+   ```
+
+   to export the project to a specific plattform or this command
+
+   ```bash
+   electron-packager . --all
+   ```
+
+   to export it for all supported plattforms (`darwin`, `linux`, `mas`, `win32`)
+
+3. Now a new directory will be created based on the name of the app and the plattform which contains the files to run it on the specified plattform
