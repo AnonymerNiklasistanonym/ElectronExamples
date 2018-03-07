@@ -150,7 +150,23 @@ npm start
 
 ## How to export Electron projects
 
-To export ELectron projects there are many ways, here is one of them:
+To export Electron projects there are many ways, here are two of them:
+
+### `electron-builder`
+
+1. On the newer version of Node this package is already installed and therfore can be called via
+
+   ```bash
+   npx electron-builder .
+   ```
+
+2. Use as additional command the following to export to your desired plattform: `--win` for Windows export (.exe and unpacked files), then there is `--linux` and `--mac`. To learn more about the options look them up on [this website](https://www.electron.build/cli).
+
+   ```bash
+   npx electron-builder . --win
+   ```
+
+### `electron-packager`
 
 1. Install the package `electron-packager`
 
