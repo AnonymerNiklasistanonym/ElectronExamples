@@ -2,17 +2,28 @@
 
 Example Electron apps
 
-## How to edit Electron projects
+## Electron docs/api
+
+https://github.com/electron/electron/tree/master/docs/api
+
+## What is an Electron project
+
+### Structure
 
 Every Electron project consist out of at least these files in one directory:
 
-- package.json
-- main.js
-- index.html
+- package.json (program info, metadata)
+- main.js (main loop)
+- index.html (visual interface)
 
-Every file can be edited with a normal text editor like [VS Code Insiders](https://code.visualstudio.com/insiders/).
+But you can add yourself an infinite number of pictures, other websites/interfaces and scripts.
 
-## How to create Electron project
+## How to edit/create/run an Electron package
+
+Every file can be edited with a normal text editor, but to run it and build it you need a terminal that is in the current directory of your project.
+If you want therfore an all in one solution you can use a text editor with an integrated terminal like [VS Code Insiders](https://code.visualstudio.com/insiders/).
+
+### Create
 
 First you need to install Node.js from [here](https://nodejs.org/en/).
 
@@ -50,10 +61,10 @@ To convert this to a electron application you just need to rename the start scri
 
 *It is important, that the lines `"main": "main.js"` and `"start": "electron ."` are exactly as in the last code snippet.*
 
-Then you also need to install and add the electron package to your project:
+Then you also need to install and add the node module electron package to your project:
 
 ```bash
-npm install --save electron
+npm install --save-dev electron
 ```
 
 Now you need to create a [`main.js`](basic-template/main.js) template file (copied form [here](https://github.com/electron/electron/blob/master/docs/tutorial/first-app.md)):
@@ -134,7 +145,7 @@ And a [`index.html`](basic-template/index.html) file:
 </html>
 ```
 
-## How to run Electron projects
+### Run
 
 For starters you need to install everything that is in the `package.json` file (you only need to do this once) (again copied form [here](https://github.com/electron/electron/blob/master/docs/tutorial/first-app.md)):
 
@@ -152,7 +163,7 @@ npm start
 
 To export Electron projects there are many ways, here are two of them:
 
-### `electron-builder`
+### `electron-builder` (recommended)
 
 1. On the newer version of Node this package is already installed and therfore can be called via
 
@@ -165,6 +176,26 @@ To export Electron projects there are many ways, here are two of them:
    ```bash
    npx electron-builder . --win
    ```
+
+#### Additional build data
+
+To get something like an icon for the installer you can sepcify additional data in the `package.json` file under `"build"` (you need to add it yourself):
+
+```json
+{
+...,
+"build": {
+    "appId": "little-shutdown-program",
+    "win": {
+      "icon": "icon.ico"
+    }
+  }
+}
+```
+
+With new properties like `"win"` `"icon"` you can add an icon to the windows build.
+
+More about what else you can specify there here you can find here: https://www.electron.build/
 
 ### `electron-packager`
 
