@@ -1,0 +1,324 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Titlebar */
+
+#titlebar-windows-10 {
+    display: block;
+    height: 32px;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.14);
+    -webkit-app-region: drag;
+    cursor: default;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#titlebar-windows-10 .title {
+    float: left;
+    margin-top: 6px;
+    margin-left: 6px;
+    color: white;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+#titlebar-windows-10 .actions .titlebar-help {
+    color: white;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+#titlebar-windows-10 .actions {
+    float: right;
+    text-align: left;
+    -webkit-app-region: no-drag;
+}
+
+#titlebar-windows-10:after,
+.actions:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.titlebar-minimize,
+.titlebar-resize,
+.titlebar-close,
+.titlebar-help {
+    float: left;
+    width: 45px;
+    height: 31px;
+    margin: 1px 1px 0 0;
+    text-align: center;
+    line-height: 29px;
+    transition: background-color 0.2s;
+}
+
+.titlebar.draggable .titlebar-minimize,
+.titlebar.draggable .titlebar-resize,
+.titlebar.draggable .titlebar-close {
+    -webkit-app-region: no-drag;
+}
+
+.titlebar-minimize svg,
+.titlebar-resize svg.maximize-svg,
+.titlebar-resize svg.fullscreen-svg,
+.titlebar-close svg {
+    width: 10px;
+    height: 10px;
+    shape-rendering: crispEdges;
+}
+
+.titlebar-close svg polygon {
+    transition: fill 0.2s;
+}
+
+:not(.fullscreen) svg.maximize-svg {
+    display: none;
+}
+
+.fullscreen svg.maximize-svg {
+    display: block;
+    margin: 10px;
+    margin-left: 18px;
+}
+
+.fullscreen svg.fullscreen-svg {
+    display: none;
+}
+
+.titlebar-minimize:hover,
+.titlebar-resize:hover,
+.titlebar-fullscreen:hover,
+.titlebar-help:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#titlebar-windows-10 .titlebar-minimize:hover,
+#titlebar-windows-10 .titlebar-resize:hover,
+#titlebar-windows-10 .titlebar-fullscreen:hover,
+#titlebar-windows-10 .titlebar-help:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.titlebar-close:hover {
+    background-color: rgba(232, 17, 35, 0.9);
+}
+
+.titlebar-close:hover svg polygon {
+    fill: rgba(255, 255, 255, 1);
+}
+
+#titlebar-windows-10 .titlebar-close:hover {
+    fill: rgba(0, 0, 0, 1);
+}
+
+#titlebar-windows-10 svg polygon,
+#titlebar-windows-10 svg rect,
+#titlebar-windows-10 svg>path {
+    fill: rgba(255, 255, 255, 1);
+}
+
+#titlebar-windows-10 .titlebar-close:hover {
+    background-color: rgba(232, 17, 35, 0.9);
+}
+
+:not(button):not(input):not(#spotify-logo):not(label) {
+    /* Show everywhere the normal mouse cursor */
+    cursor: default;
+}
+
+button,
+input,
+#spotify-logo,
+label {
+    /* Show on this objects the pointer cursor to signale something can be clicked */
+    cursor: pointer;
+}
+
+#time-inputs input {
+    cursor: text;
+}
+
+#time-inputs,
+#timer-buttons {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    /* All buttons share the same width */
+    grid-auto-columns: 1fr;
+}
+
+#time-inputs {
+    grid-template-areas: "input-days input-hours input-minutes input-seconds";
+    max-width: 650px;
+}
+
+#timer-buttons {
+    grid-template-areas: "button-pause-resume button-start-stop button-clear";
+    max-width: 500px;
+}
+
+#time-inputs input,
+#timer-buttons input {
+    text-align: center;
+    padding: 15px;
+    font-size: 25px;
+    font-family: "Open Sans";
+    font-weight: 300;
+    color: white;
+    outline: none;
+    transition: all 0.25s;
+}
+
+#time-inputs input {
+    border: 0px solid grey;
+    background: black;
+}
+
+#timer-buttons input {
+    background-color: rgba(250, 250, 250, 0.4);
+    border: 1px transparent solid;
+    mix-blend-mode: screen;
+}
+
+#time-inputs input:hover,
+#time-inputs input:active,
+#time-inputs input:focus {
+    background: rgb(41, 41, 41);
+}
+
+#timer-buttons input:hover,
+#timer-buttons input:focus {
+    background-color: rgba(250, 250, 250, 0.6);
+    border: 1px white solid;
+}
+
+#spotify-logo {
+    width: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    grid-area: spotify-logo;
+    transition: background-color 0.1s;
+}
+
+#spotify-logo:hover {
+    background-color: rgba(250, 250, 250, 0.6);
+}
+
+#main-container {
+    position: absolute;
+    top: 32px;
+    width: 100vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#spotify-indicator {
+    display: grid;
+    grid-template-areas: "1fr spotify-logo";
+}
+
+#button_pause_resume {
+    grid-area: button-pause-resume;
+}
+
+#button_start_stop {
+    grid-area: button-start-stop;
+}
+
+#button_clear {
+    grid-area: button-clear;
+}
+
+#timer_d {
+    grid-area: input-days;
+}
+
+#timer_h {
+    grid-area: input-hours;
+}
+
+#timer_m {
+    grid-area: input-minutes;
+}
+
+#timer_s {
+    grid-area: input-seconds;
+}
+
+#about {
+    font-family: Open sans, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+    display: block;
+    position: absolute;
+    width: 100vw;
+    top: 32px;
+    height: 100vh;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+}
+
+#about_container {
+    display: grid;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+#about_container ul {
+    margin-top: -10px;
+}
+
+#about_container button {
+    background-color: rgba(250, 250, 250, 0.4);
+    border: 1px transparent solid;
+    mix-blend-mode: screen;
+    color: white;
+}
+
+#about_container button:hover,
+#about_container button:focus {
+    background-color: rgba(250, 250, 250, 0.6);
+    border: 1px white solid;
+}
+
+#about_container button.big-button {
+    padding: 15px;
+    font-size: 20px;
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+#about_container h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.14);
+}

@@ -1,5 +1,5 @@
 {
-  "name": "basic-frameless-transparent-window",
+  "name": "basic-frameless-window-custom-titlebar",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -11,5 +11,12 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^1.8.3"
+  },
+  "build": {
+    "appId": "basic-frameless-window-custom-titlebar",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    }
   }
 }
