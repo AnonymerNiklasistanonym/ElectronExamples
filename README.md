@@ -132,7 +132,7 @@ And a [`index.html`](basic-template/index.html) file:
 ```html
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
         <meta charset="UTF-8">
         <title>Hello World!</title>
     </head>
@@ -141,7 +141,7 @@ And a [`index.html`](basic-template/index.html) file:
         We are using node <script>document.write(process.versions.node)</script>,
         Chrome <script>document.write(process.versions.chrome)</script>,
         and Electron <script>document.write(process.versions.electron)</script>.
-	</body>
+    </body>
 </html>
 ```
 
@@ -195,28 +195,12 @@ To get something like an icon for the installer you can sepcify additional data 
 
 With new properties like `"win"` `"icon"` you can add an icon to the windows build.
 
-More about what else you can specify there here you can find here: https://www.electron.build/
+## Nice things to know
 
-### `electron-packager`
+### Update a package
 
-1. Install the package `electron-packager`
+To simply update all modules run `npm-update`
 
-   ```bash
-   npm install electron-packager -g
-   ```
+To view if any module has a new version run `npm outdated`
 
-2. After restarting the console run the command
-
-   ```bash 
-   electron-packager . --platform=<platform>
-   ```
-
-   to export the project to a specific plattform or this command
-
-   ```bash
-   electron-packager . --all
-   ```
-
-   to export it for all supported plattforms (`darwin`, `linux`, `mas`, `win32`)
-
-3. Now a new directory will be created based on the name of the app and the plattform which contains the files to run it on the specified plattform
+If you use Visual Studio Code as code editor you can also simply install the extension [Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) and then open the package.json file to view if there are any updates and with just one click update them.
