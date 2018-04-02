@@ -204,3 +204,37 @@ To simply update all modules run `npm-update`
 To view if any module has a new version run `npm outdated`
 
 If you use Visual Studio Code as code editor you can also simply install the extension [Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) and then open the package.json file to view if there are any updates and with just one click update them.
+
+### Communication problems
+
+Because you can for example only popup native message boxes in the main process or only access the `electron.app` functions or relaunch the app or ... you need to communicate between the both JavaScript files. This can easily be done with [these two electron modules](https://electronjs.org/docs/api/ipc-main#sending-messages):
+
+You just need to place this in your `main.js` file:
+
+``` JavaScript
+// In main process.
+const {ipcMain} = require('electron')
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg)  // prints "ping"
+  event.sender.send('asynchronous-reply', 'pong')
+})
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg)  // prints "ping"
+  event.returnValue = 'pong'
+})
+```
+  
+  And this in your `index.js` file:
+  
+  ``` JavaScript
+// In renderer process (web page).
+const {ipcRenderer} = require('electron')
+console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+  console.log(arg) // prints "pong"
+})
+ipcRenderer.send('asynchronous-message', 'ping')
+  ```
+  
