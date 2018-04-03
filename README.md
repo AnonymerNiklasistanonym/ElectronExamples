@@ -199,11 +199,21 @@ With new properties like `"win"` `"icon"` you can add an icon to the windows bui
 
 ### Update a package
 
-To simply update all modules run `npm-update`
+To simply update all modules run `npm update`
 
 To view if any module has a new version run `npm outdated`
 
 If you use Visual Studio Code as code editor you can also simply install the extension [Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) and then open the package.json file to view if there are any updates and with just one click update them.
+
+### Update a global package
+
+For example the `electron` module you installed months ago won't update itself - but with the following command you can update it:
+
+``` bash
+npm update -g electron
+```
+
+If you just write `npm update -g` all global packages will be updated and `npm outdated -g` works too.
 
 ### Communication problems
 
