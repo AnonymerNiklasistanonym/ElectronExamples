@@ -18,6 +18,23 @@ body {
     width: 100%;
 }
 
+#titlebar-windows-10 .resize-handle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    -webkit-app-region: no-drag;
+}
+
+#titlebar-windows-10 .resize-handle.top {
+    width: 100%;
+    height: 3px;
+}
+
+#titlebar-windows-10 .resize-handle.left {
+    width: 3px;
+    height: 32px;
+}
+
 #titlebar-windows-10 .title {
     float: left;
     margin-top: 6px;
