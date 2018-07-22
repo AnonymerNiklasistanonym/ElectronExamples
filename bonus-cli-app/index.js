@@ -5,10 +5,11 @@
  */
 
 // https://github.com/SBoudrias/Inquirer.js/ A collection of common interactive CLI UIs
+// Cool examples: https://github.com/SBoudrias/Inquirer.js/tree/master/packages/inquirer/examples
 const inquirer = require("inquirer")
 // https://github.com/chalk/chalk - Terminal string styling
 const chalk = require("chalk")
-// Portable Unix shell commands for Node.js
+// https://github.com/shelljs/shelljs Portable Unix shell commands for Node.js
 const shelljs = require("shelljs")
 // get file system separator
 const path = require('path')
