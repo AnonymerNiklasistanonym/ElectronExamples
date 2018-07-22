@@ -1,0 +1,17 @@
+{
+    "name": "bonus-cli-app",
+    "version": "1.0.0",
+    "description": "A basic template for a cross platform node CLI application interface",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "chalk": "^2.4.1",
+        "inquirer": "^6.0.0",
+        "shelljs": "^0.8.2"
+    },
+    "bin": {
+        "bonus-cli-app": "./index.js"
+    }
+}
