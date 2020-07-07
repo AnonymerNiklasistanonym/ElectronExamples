@@ -8,6 +8,6 @@
     "build-win": "npx electron-builder . --win"
   },
   "devDependencies": {
-    "electron": "^1.8.2"
+    "electron": "^9.1.0"
   }
 }
